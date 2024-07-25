@@ -12,12 +12,14 @@
 
   <body>
     <%= render partial: 'layouts/navbar' %>
-    <div class="container main-container bg-dark text-light">
+    <div class="container mt-3">
       <%= turbo_frame_tag 'flash' do %>
         <div id="messages">
           <%= render 'layouts/messages' %>
         </div>
-      <% end %>
+    </div>
+    <% end %>
+    <div class="container main-container bg-dark text-light">
       <%= yield %>
     </div>
   </body>
