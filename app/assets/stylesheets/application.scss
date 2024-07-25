@@ -1,2 +1,13 @@
 @import "bootstrap";
 @import "navbar";
+
+body {
+  background: asset_url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.main-container {
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 15px;
+}

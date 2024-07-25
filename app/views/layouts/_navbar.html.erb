@@ -6,6 +6,14 @@
 <!--      </a>-->
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <% if current_user %>
+          <li class="user_name">
+            <a href="#" class="nav-link px-2 text-white">
+              <i class="fas fa-user"></i>
+              <%= current_user.username %>
+            </a>
+          </li>
+        <% end %>
         <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
@@ -18,8 +26,12 @@
       </form>
 
       <div class="text-end">
-        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light me-2" %>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning"%>
+        <% if current_user %>
+          <%= link_to "Log out", destroy_user_session_path, class: "btn btn-danger", data: { "turbo-method": :delete }%>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "btn btn-success me-2" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-light"%>
+        <% end %>
       </div>
     </div>
   </div>
