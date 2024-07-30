@@ -7,6 +7,14 @@
 <% if alert %>
   <div class='alert alert-danger alert-dismissible fade show'>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <%= alert %>
+    <% if alert.class == Array %>
+      <ul style="padding-bottom: 0; margin-bottom: 0;">
+      <% alert.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    <% else %>
+      <%= alert %>
+    <% end %>
   </div>
 <% end %>
