@@ -1,26 +1,32 @@
-<h2>Log in</h2>
+<main class="form-signin w-100 m-auto" style="padding-top: 7%">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="form-floating">
+      <%= f.email_field :email, autocomplete: "email", class: 'form-control form-index-first' %>
+      <%= f.label :email, "Email" %>
     </div>
+
+    <div class="form-floating">
+      <%= f.password_field :password, autocomplete: "password", class: 'form-control form-index-last' %>
+      <%= f.label :password, "Password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-check text-start my-3">
+        <%= f.check_box :remember_me, class: 'form-check-input' %>
+        <%= f.label :remember_me, class: 'form-check-label text-white' do %>
+          <%= resource.class.human_attribute_name('Remember me') %>
+        <% end %>
+      </div>
+    <% end %>
+
+
+    <%= f.submit "Log in", class: 'btn btn-success w-100 py-2 mt-2'  %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="mt-2">
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
+</main>
 
-<%= render "devise/shared/links" %>
