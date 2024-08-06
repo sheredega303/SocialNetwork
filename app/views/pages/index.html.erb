@@ -1,4 +1,12 @@
 <div class="container main-container bg-dark text-light">
-  <h1>Pages#index</h1>
-  <p>Find me in app/views/pages/index.html.erb</p>
+  <% @events.each do |event| %>
+    <% if event[:type] == "signup" %>
+      <div class="d-flex my-1">
+        <%= event[:date].year == Time.current.year ? event[:date].strftime("%H:%M, %d %B") : event[:date].strftime("%H:%M, %d %B %Y")%> ----
+        <%= link_to event[:user][:username], user_path(event[:user]), class: "link mx-1"%>
+        joined to us!
+      </div>
+    <% end %>
+  <% end %>
 </div>
+
