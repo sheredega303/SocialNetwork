@@ -8,13 +8,14 @@
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <% if current_user %>
           <li class="user_name">
-            <%= link_to user_path(current_user), class: "nav-link px-2 text-white" do %>
+            <%= link_to user_path(current_user), class: "nav-link px-2 text-#{user_path(current_user) == request.path ? "secondary" : "white"}" do %>
               <i class="fas fa-user"></i>
               <%= current_user.username %>
             <% end %>
           </li>
         <% end %>
-        <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+
+        <%= link_to "Home", root_path, class: "nav-link px-2 text-#{request.path == root_path ? "secondary" : "white"}"  %>
         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
         <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
