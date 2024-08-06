@@ -8,10 +8,10 @@
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <% if current_user %>
           <li class="user_name">
-            <a href="#" class="nav-link px-2 text-white">
+            <%= link_to user_path(current_user), class: "nav-link px-2 text-white" do %>
               <i class="fas fa-user"></i>
               <%= current_user.username %>
-            </a>
+            <% end %>
           </li>
         <% end %>
         <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
@@ -29,8 +29,8 @@
         <% if current_user %>
           <%= link_to "Log out", destroy_user_session_path, class: "btn btn-danger", data: { "turbo-method": :delete }%>
         <% else %>
-          <%= link_to "Login", new_user_session_path, class: "btn btn-success me-2" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-light"%>
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-success me-2" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary"%>
         <% end %>
       </div>
     </div>
